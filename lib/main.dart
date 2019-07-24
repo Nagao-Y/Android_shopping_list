@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   int _id;
 
-  static int _thingCounter = 3;
+  static int _thingCounter = 0;
   int _sum = 0;
   int _tax = 0;
 
@@ -39,19 +39,20 @@ class _MyHomePageState extends State<MyHomePage> {
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text('$_thingCounter 合計：$_sum 円(消費税 $_tax ％込)'),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black54,
       ),
       body: new ListView(
         children: new List.generate(_thingCounter, (int index){
           index += 1;
           return new Container(
-            child: Row(children: [
+            child: Row(
+              children: [
                     Expanded(
                       flex: 3,
                       child: Text("#$index"),
                     ),
 
-                 //商品名
+                    //商品名
                     Expanded(
                       flex: 30,
                       child: TextField(
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           labelText: "商品名",
                         ),
                         style: new TextStyle(
-                          fontSize: 18.0,              
+                          fontSize: 18.0,
                         ),
                       ),
                     ),
@@ -75,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         style: new TextStyle(
                           fontSize: 18.0,
-                        ),                   
+                        ),
                       ),
                     ),
 
@@ -93,21 +94,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ),
-            ],),
+              ],
+            ),
           );
         },),
       ),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: _createNewList,
+        child: Text("plus"),
+      ),
     );
-  }
-
-
-  Widget addButtonBuild(BuildContext context){
-     return  FlatButton(
-       child: Text("+"),
-       onPressed: _createNewList(),
-       padding:EdgeInsets.all(10.0),
-       color: Colors.grey,
-     );
   }
 
   _createNewList(){
@@ -118,7 +114,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _changeItemData(int id,String goodsName,int price,int pieces){//数値を反映させる
     setState(() {//この中に変数の処理を書く
-
     });
   }
 
